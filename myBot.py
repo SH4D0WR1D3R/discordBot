@@ -1,7 +1,10 @@
 import discord
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 client = discord.Client() # instance of client - connects to discord
+TOKEN = os.getenv('BOT_TOKEN')
 
 @client.event # registers an event. uses callbacks (function called when something else happens)
 async def on_ready(): # called when bot ready to start being used
@@ -16,4 +19,4 @@ async def on_message(message): # called when bot receives a woman
     if 'computer' in message.content.lower():
         await message.channel.send('I agree')
 
-client.run('ODc5NjgxMjM5MzQ1NDA1OTUy.YSTQ_w.EMGoxsxvuk1Ko_WOzMoOsZnPp70') # runs bot with log in token
+client.run(TOKEN) # runs bot with log in token
